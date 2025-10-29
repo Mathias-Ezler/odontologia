@@ -1,8 +1,10 @@
 ---
-// Header.astro
+// Componenente del Header
+//Esto esta siendo programado a las 23:45, con 3 tazas de cafe encima
+//No me preguntes que hice por que mañana ni yo mismo lo voy a saber
 ---
 
-<header class=" border-b border-gray-200">
+<header class="border-b border-gray-200">
   <div class="container mx-auto px-6 py-4">
     <div class="flex items-center justify-between">
       
@@ -18,36 +20,11 @@
 
       <!-- Navegación centrada -->
       <nav class="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
-        <a 
-          href="/" 
-          class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium"
-        >
-          Inicio
-        </a>
-        <a 
-          href="/servicios" 
-          class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium"
-        >
-          Servicios
-        </a>
-        <a 
-          href="/sobre-mi" 
-          class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium"
-        >
-          Sobre mi
-        </a>
-        <a 
-          href="/resultados" 
-          class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium"
-        >
-          Resultados
-        </a>
-        <a 
-          href="/resenas" 
-          class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium"
-        >
-          Reseñas
-        </a>
+        <a href="/" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium">Inicio</a>
+        <a href="/servicios" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium">Servicios</a>
+        <a href="/sobre-mi" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium">Sobre mi</a>
+        <a href="/resultados" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium">Resultados</a>
+        <a href="/resenas" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium">Reseñas</a>
       </nav>
 
       <!-- Botón de agendar con WhatsApp a la derecha -->
@@ -58,52 +35,49 @@
           rel="noopener noreferrer"
           class="hidden md:flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all text-sm shadow-sm hover:shadow-md"
         >
-          <svg class="w-6 h-6 bg-amber-50 rounded-md" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3.516 3.516c4.686-4.686 12.284-4.686 16.97 0 4.686 4.686 4.686 12.283 0 16.97a12.004 12.004 0 01-13.754 2.299l-5.814.735a.392.392 0 01-.438-.44l.748-5.788A12.002 12.002 0 013.517 3.517zm3.61 17.043l.3.158a9.846 9.846 0 0011.534-1.758c3.843-3.843 3.843-10.074 0-13.918-3.843-3.843-10.075-3.843-13.918 0a9.846 9.846 0 00-1.747 11.554l.16.303-.51 3.942a.196.196 0 00.219.22l3.961-.501zm6.534-7.003l-.933 1.164a9.843 9.843 0 01-3.497-3.495l1.166-.933a.792.792 0 00.23-.94L9.561 6.96a.793.793 0 00-.924-.445 1587.311 1587.311 0 01-2.008.617.797.797 0 00-.588.88 11.754 11.754 0 0010.005 9.997.797.797 0 00.88-.587l.617-2.007a.792.792 0 00-.445-.923L14.705 13.426a.792.792 0 00-.94.23l-.105.9z"/>
-          </svg>
+          <img 
+            src="img/logos/logo-agendar.webp" 
+            alt="WhatsApp" 
+            class="w-6 h-6 bg-amber-50 rounded-md p-1"
+          />
           <span>Agendar Cita</span>
         </a>
 
         <!-- Menú hamburguesa para móvil -->
         <button 
-          class="md:hidden text-gray-600 hover:text-blue-600 transition-colors w-6 h-6 flex flex-col justify-center items-center gap-1.5"
+          class="md:hidden text-gray-600 hover:text-blue-600 transition-colors relative w-8 h-8 flex items-center justify-center"
           id="menu-toggle"
           aria-label="Toggle menu"
         >
-          <span class="hamburger-line w-6 h-0.5 bg-current transition-all duration-300 ease-in-out"></span>
-          <span class="hamburger-line w-6 h-0.5 bg-current transition-all duration-300 ease-in-out"></span>
-          <span class="hamburger-line w-6 h-0.5 bg-current transition-all duration-300 ease-in-out"></span>
+          <div class="w-6 h-5 relative flex flex-col justify-between">
+            <span class="hamburger-line block w-full h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out"></span>
+            <span class="hamburger-line block w-full h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out"></span>
+            <span class="hamburger-line block w-full h-0.5 bg-current rounded-full transition-all duration-300 ease-in-out"></span>
+          </div>
         </button>
       </div>
     </div>
 
     <!-- Menú móvil -->
-    <nav id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-300 ease-in-out max-h-0 opacity-0">
-      <div class="flex flex-col space-y-3 pt-4 border-t border-gray-200 mt-4">
-        <a href="/" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">
-          Inicio
-        </a>
-        <a href="/servicios" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">
-          Servicios
-        </a>
-        <a href="/sobre-mi" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">
-          Sobre mi
-        </a>
-        <a href="/resultados" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">
-          Resultados
-        </a>
-        <a href="/resenas" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">
-          Reseñas
-        </a>a
+    <nav id="mobile-menu" class="md:hidden overflow-hidden transition-all duration-500 ease-in-out max-h-0">
+      <div class="flex flex-col space-y-3 pt-4 border-t border-gray-200 mt-4 opacity-0 transition-opacity duration-300 ease-out pb-4" id="mobile-menu-content">
+        <a href="/" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">Inicio</a>
+        <a href="/servicios" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">Servicios</a>
+        <a href="/sobre-mi" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">Sobre mi</a>
+        <a href="/resultados" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">Resultados</a>
+        <a href="/resenas" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">Reseñas</a>
+
         <a 
           href="https://wa.me/1234567890" 
           target="_blank"
           rel="noopener noreferrer"
           class="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all text-sm shadow-sm hover:shadow-md"
         >
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M3.516 3.516c4.686-4.686 12.284-4.686 16.97 0 4.686 4.686 4.686 12.283 0 16.97a12.004 12.004 0 01-13.754 2.299l-5.814.735a.392.392 0 01-.438-.44l.748-5.788A12.002 12.002 0 013.517 3.517zm3.61 17.043l.3.158a9.846 9.846 0 0011.534-1.758c3.843-3.843 3.843-10.074 0-13.918-3.843-3.843-10.075-3.843-13.918 0a9.846 9.846 0 00-1.747 11.554l.16.303-.51 3.942a.196.196 0 00.219.22l3.961-.501zm6.534-7.003l-.933 1.164a9.843 9.843 0 01-3.497-3.495l1.166-.933a.792.792 0 00.23-.94L9.561 6.96a.793.793 0 00-.924-.445 1587.311 1587.311 0 01-2.008.617.797.797 0 00-.588.88 11.754 11.754 0 0010.005 9.997.797.797 0 00.88-.587l.617-2.007a.792.792 0 00-.445-.923L14.705 13.426a.792.792 0 00-.94.23l-.105.9z"/>
-          </svg>
+          <img 
+            src="img/logos/logo-agendar.webp" 
+            alt="WhatsApp" 
+            class="w-5 h-5 bg-amber-50 rounded-md p-1"
+          />
           <span>Agendar Cita</span>
         </a>
       </div>
@@ -112,21 +86,39 @@
 </header>
 
 <style>
+  /* Posicionamiento inicial de las líneas del hamburguesa */
+  .hamburger-line:nth-child(1) {
+    transform-origin: center;
+  }
+  
+  .hamburger-line:nth-child(2) {
+    transform-origin: center;
+  }
+  
+  .hamburger-line:nth-child(3) {
+    transform-origin: center;
+  }
+
+  /* Animación del menú hamburguesa a X */
   #menu-toggle.open .hamburger-line:nth-child(1) {
-    transform: rotate(45deg) translate(6px, 6px);
+    transform: translateY(9px) rotate(45deg);
   }
   
   #menu-toggle.open .hamburger-line:nth-child(2) {
     opacity: 0;
-    transform: translateX(10px);
+    transform: scaleX(0);
   }
   
   #menu-toggle.open .hamburger-line:nth-child(3) {
-    transform: rotate(-45deg) translate(6px, -6px);
+    transform: translateY(-9px) rotate(-45deg);
   }
 
+  /* Animación del menú móvil */
   #mobile-menu.open {
     max-height: 500px;
+  }
+
+  #mobile-menu.open #mobile-menu-content {
     opacity: 1;
   }
 </style>
