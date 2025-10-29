@@ -1,0 +1,92 @@
+---
+import ScheduleButton from "../components/ScheduleButton.astro";
+
+const services = [
+  {
+    title: "Arquitectura Labial",
+    imagePath: "/img/details/labial.webp",
+    imageAlt: "Primer plano de labios recibiendo tratamiento de Arquitectura Labial.",
+    link: "#arquitectura-labial",
+  },
+  {
+    title: "Periodoncia",
+    imagePath: "/img/details/estetica.webp",
+    imageAlt: "Odontóloga realizando un tratamiento de periodoncia.",
+    link: "#periodoncia",
+  },
+  {
+    title: "Estética",
+    imagePath: "/img/details/perodoncia.webp",
+    imageAlt: "Modelo de yeso de una dentadura con dientes tallados para tratamientos de estética dental.",
+    link: "#estetica",
+  },
+];
+
+const INITIAL_CLASSES = "opacity-0 translate-y-8";
+const VISIBLE_CLASSES = "opacity-100 translate-y-0";
+const TRANSITION_PROPS = "transition duration-700 ease-out";
+---
+
+<section id="servicios" class="py-16 md:py-24 bg-white">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+    <!-- Encabezado -->
+    <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
+      <div>
+        <h1 class="text-4xl md:text-5xl font-semibold text-gray-900 leading-tight border-b border-blue-500 pb-2 inline-block">
+          Mis servicios odontológicos
+        </h1>
+        <p class="mt-3 text-lg text-gray-600">
+          Soluciones integrales para la salud y estética de tu sonrisa.
+        </p>
+      </div>
+      <ScheduleButton /> <!-- Componente del botón de agendar cita -->
+    </header>
+
+    <!-- Tarjetas -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+      {services.map(({ title, imagePath, imageAlt, link }, i) => (
+        <a 
+          href={link}
+          class={`block group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transform hover:-translate-y-1 ${TRANSITION_PROPS} ${INITIAL_CLASSES}`}
+          data-animate
+          style={`transition-delay: ${i * 150}ms;`}
+        >
+          <div class="relative h-96">
+            <img 
+              src={imagePath} 
+              alt={imageAlt} 
+              loading="lazy"
+              class="w-full h-full object-cover absolute inset-0 group-hover:scale-105 transition-transform duration-500"
+            />
+            <div class="absolute inset-0 bg-gradient-to-b from-black/60 via-black/10 to-transparent"></div>
+            <h2 class="absolute top-6 left-6 text-2xl font-semibold text-white leading-snug">
+              {title}
+            </h2>
+            <div class="absolute inset-0 bg-white/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+  </div>
+</section>
+
+<script is:inline define:vars={{ initialClasses: INITIAL_CLASSES, visibleClasses: VISIBLE_CLASSES }}>
+  const targets = document.querySelectorAll('[data-animate]');
+  const initial = initialClasses.split(' ');
+  const visible = visibleClasses.split(' ');
+
+  // IntersectionObserver para animar solo cuando el usuario vea la sección
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove(...initial);
+        entry.target.classList.add(...visible);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  targets.forEach(t => observer.observe(t));
+</script>

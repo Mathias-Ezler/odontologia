@@ -2,6 +2,7 @@
 // Componenente del Header
 //Esto esta siendo programado a las 23:45, con 3 tazas de cafe encima
 //No me preguntes que hice por que mañana ni yo mismo lo voy a saber
+import ScheduleButton from '../components/ScheduleButton.astro';
 ---
 
 <header class="fixed top-0 left-0 w-full z-50 border-b border-gray-200 bg-white/80 backdrop-blur-md">
@@ -69,20 +70,8 @@
         <a href="/sobre-mi" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">Sobre mi</a>
         <a href="/resultados" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">Resultados</a>
         <a href="/resenas" class="text-sm text-gray-400 hover:text-blue-600 transition-colors font-medium py-2">Reseñas</a>
-
-        <a 
-          href="https://wa.me/1234567890" 
-          target="_blank"
-          rel="noopener noreferrer"
-          class="flex items-center gap-2 bg-blue-500 hover:bg-blue-600 text-white px-5 py-2.5 rounded-lg font-medium transition-all text-sm shadow-sm hover:shadow-md"
-        >
-          <img 
-            src="img/logos/logo-agendar.webp" 
-            alt="WhatsApp" 
-            class="w-5 h-5 bg-amber-50 rounded-md p-1"
-          />
-          <span>Agendar Cita</span>
-        </a>
+        
+        <ScheduleButton />
       </div>
     </nav>
   </div>
