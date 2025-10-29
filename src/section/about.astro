@@ -1,0 +1,98 @@
+---
+---
+
+<section class="max-w-6xl mx-auto px-6 md:px-8 py-20">
+  <div class="grid md:grid-cols-2 gap-12 items-center">
+    <!-- Imagen -->
+    <div class="relative opacity-0 translate-x-[-50px]" data-animate="fade-right">
+      <img 
+        src="/img/details/doctora.webp"
+        alt="Dra. Shemfire" 
+        class="w-full h-auto rounded-2xl shadow-xl"
+      />
+      <div class="absolute -bottom-5 -right-5 w-24 h-24 bg-blue-100 rounded-full blur-2xl opacity-70"></div>
+    </div>
+
+    <!-- Contenido -->
+    <div class="space-y-8">
+      <div class="opacity-0 translate-y-[-30px]" data-animate="fade-up">
+        <h2 class="text-4xl font-bold text-gray-900 mb-3">Sobre mí</h2>
+        <div class="w-100 h-[3px] bg-blue-500 rounded-full"></div>
+      </div>
+      
+      <div class="space-y-6 text-gray-700 leading-relaxed">
+        <p class="opacity-0 translate-y-[-20px]" data-animate="fade-up" data-delay="100">
+          ¡Hola! Soy la Dra. <span class="font-semibold text-gray-900">Marta</span>. 
+          Mi pasión es combinar la salud dental con la estética, creando sonrisas 
+          naturales que devuelvan la confianza a mis pacientes.
+        </p>
+        
+        <p class="opacity-0 translate-y-[-20px]" data-animate="fade-up" data-delay="200">
+          Egresé de la Facultad de Odontología Pierre Fauchard y cuento con capacitaciones avanzadas en 
+          endodoncia y odontología orofacial, lo que me permite ofrecer un diagnóstico completo y preciso.
+        </p>
+        
+        <p class="opacity-0 translate-y-[-20px]" data-animate="fade-up" data-delay="300">
+          Mi compromiso es escucharte, entender tus objetivos y diseñar un plan de tratamiento a tu medida, 
+          usando siempre la mejor tecnología en un ambiente relajado y profesional.
+        </p>
+      </div>
+
+      <!-- Card Medalla de Oro -->
+      <div 
+        class="flex items-center gap-5 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200 shadow-sm opacity-0 scale-95"
+        data-animate="fade-scale" 
+        data-delay="400"
+      >
+        <!-- Icono -->
+        <div class="flex-shrink-0">
+          <div class="w-14 h-14 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-md">
+            🏅
+          </div>
+        </div>
+        
+        <!-- Texto -->
+        <div>
+          <h3 class="font-semibold text-gray-900 text-lg">Medalla De Oro</h3>
+          <p class="text-sm text-gray-700">
+            Soy la mejor egresada de la facultad de odontología, medalla de oro.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  [data-animate] {
+    transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  [data-animate].animate-in {
+    opacity: 1 !important;
+    transform: translate(0, 0) scale(1) !important;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const animatedElements = document.querySelectorAll('[data-animate]');
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const delay = entry.target.getAttribute('data-delay') ?? '0';
+          setTimeout(() => {
+            entry.target.classList.add('animate-in');
+          }, parseInt(delay, 10));
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    });
+
+    animatedElements.forEach(el => observer.observe(el));
+  });
+</script>
