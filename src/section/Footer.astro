@@ -1,0 +1,50 @@
+---
+const navItems = [
+    { title: 'Inicio', href: '/' },
+    { title: 'Servicios', href: '#servicios' },
+    { title: 'Sobre mí', href: '#about' },
+    { title: 'Resultados', href: '#results' },
+    { title: 'Reseñas', href: '#review' },
+];
+
+const currentYear = new Date().getFullYear();
+
+const logoSrc = '/img/logos/logo.webp';
+const logoAlt = 'Logo de Dra. Marta';
+---
+
+<footer class="bg-[#252526] text-white mt-12 border-t border-gray-700">
+    <div class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+
+        <div class="pb-6 border-b border-gray-600 mb-6">
+            <div class="flex items-center">
+                <img 
+                    src={logoSrc} 
+                    alt={logoAlt} 
+                    class="w-9 h-auto rounded-full mr-3 object-cover" 
+                />
+                <span class="text-xl text-white">Dra. Marta</span>
+            </div>
+        </div>
+        
+        <div class="py-6 border-b border-gray-600 mb-6">
+            <nav class="flex flex-wrap space-x-6 text-sm font-medium text-white">
+                {navItems.map((item) => (
+                    <a 
+                        href={item.href} 
+                        class="hover:text-blue-400 transition duration-150 ease-in-out whitespace-nowrap mb-2 sm:mb-0"
+                    >
+                        {item.title}
+                    </a>
+                ))}
+            </nav>
+        </div>
+
+        <div class="py-6 text-center sm:text-left">
+            <p class="text-sm font-semibold text-gray-500">
+                &copy; {currentYear} All rights reserved.
+            </p>
+        </div>
+
+    </div>
+</footer>
