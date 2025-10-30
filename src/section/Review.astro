@@ -2,80 +2,78 @@
 import ScheduleButton from "../components/ScheduleButton.astro";
 
 const testimonials = [
-  {
-    title: "Fue realmente excelente",
-    text: "Mi experiencia con la Dra. Marta desde el primer momento mostró una gran dedicación, paciencia y calidez humana. Me explicó cada procedimiento con claridad, transmitió mucha confianza y se nota su compromiso con brindar el mejor resultado posible. El consultorio me pareció impecable, con equipos modernos y un ambiente muy agradable. Sin duda, una profesional altamente recomendable por su trato, su ética y la calidad de su trabajo.",
-    author: "Ninfa Torres"
-  },
-  {
-    title: "Mucho más que una visita al dentista",
-    text: "Su eficiencia y dedicación son admirables, su trato humano hace que cada consulta se sienta como una conversación entre amigas. Tiene la capacidad única de combinar la excelencia profesional con una empatía genuina, logrando que uno se sienta cuidado, comprendido y escuchado. Gracias a su trabajo hoy puedo sonreír con confianza, pero también con gratitud. La Dra. Marta además de ser mi odontóloga muchas veces es mi psicóloga.",
-    author: "Mirian Centurión"
-  },
-  {
-    title: "Eres la mejor odontóloga",
-    text: "Gracias Dra Marta!! Eres la mejor. Tu profesionalismo y amabilidad siempre con una sonrisa y ha mejorado mi seguridad al sonreír. Estoy muy agradecida por tu trabajo. Muchas gracias !!!!",
-    author: "Rossana Salas"
-  }
+    {
+        title: "Fue realmente excelente",
+        text: "Mi experiencia con la Dra. Marta desde el primer momento mostró una gran dedicación, paciencia y calidez humana. Me explicó cada procedimiento con claridad, transmitió mucha confianza y se nota su compromiso con brindar el mejor resultado posible. El consultorio me pareció impecable, con equipos modernos y un ambiente muy agradable. Sin duda, una profesional altamente recomendable por su trato, su ética y la calidad de su trabajo.",
+        author: "Ninfa Torres"
+    },
+    {
+        title: "Mucho más que una visita al dentista",
+        text: "Su eficiencia y dedicación son admirables, su trato humano hace que cada consulta se sienta como una conversación entre amigas. Tiene la capacidad única de combinar la excelencia profesional con una empatía genuina, logrando que uno se sienta cuidado, comprendido y escuchado. Gracias a su trabajo hoy puedo sonreír con confianza, pero también con gratitud. La Dra. Marta además de ser mi odontóloga muchas veces es mi psicóloga.",
+        author: "Mirian Centurión"
+    },
+    {
+        title: "Eres la mejor odontóloga",
+        text: "Gracias Dra Marta!! Eres la mejor. Tu profesionalismo y amabilidad siempre con una sonrisa y ha mejorado mi seguridad al sonreír. Estoy muy agradecida por tu trabajo. Muchas gracias !!!!",
+        author: "Rossana Salas"
+    }
 ];
 ---
 
 <section id="review" class="py-12 md:py-16 lg:py-20 px-4 sm:px-6 overflow-hidden">
-  <div class="max-w-7xl mx-auto">
+    <div class="max-w-7xl mx-auto">
 
-     <!-- Header Section -->
-    <div class="mb-12 lg:mb-16 opacity-0 animate-fade-in">
-      <!-- Título -->
-      <h2 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-semibold text-gray-900 mb-3 text-center md:text-left">
-        Pacientes felices, sonrisas reales
-      </h2>
+        <div class="mb-12 lg:mb-16 opacity-0 animate-fade-in">
+            <h2 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-semibold text-gray-900 mb-3 text-center md:text-left">
+                Pacientes felices, sonrisas reales
+            </h2>
 
-      <!-- Raya azul -->
-      <div class="w-100 md:w-150 h-0.5 bg-gradient-to-r from-blue-500 to-blue-300 mb-4 mx-auto md:mx-0"></div>
+            <div class="w-100 md:w-150 h-0.5 bg-gradient-to-r from-blue-500 to-blue-300 mb-4 mx-auto md:mx-0"></div>
 
-      <!-- Texto descriptivo -->
-      <p class="text-gray-600 text-base sm:text-lg md:text-lg lg:text-xl max-w-3xl text-center md:text-left mb-4">
-        Mi mayor satisfacción es ver el resultado final. Mirá lo que opinan mis pacientes de mi trabajo.
-      </p>
+            <p class="text-gray-600 text-base sm:text-lg md:text-lg lg:text-xl max-w-3xl text-center md:text-left mb-4">
+                Mi mayor satisfacción es ver el resultado final. Mirá lo que opinan mis pacientes de mi trabajo.
+            </p>
 
-      <!-- Botón -->
-      <div class="flex justify-center md:justify-end">
-        <ScheduleButton />
-      </div>
-    </div>
-
-    <!-- Testimonials Slider -->
-    <div class="relative opacity-0 animate-fade-in-delay-2">
-      <div class="overflow-hidden -mx-2 sm:mx-0">
-        <div id="testimonials-slider" class="flex transition-transform duration-700 ease-in-out">
-          {testimonials.map((testimonial, index) => (
-            <div class="w-full md:w-1/2 flex-shrink-0 px-2 sm:px-3" data-index={index}>
-              <div class="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 lg:p-10 h-full shadow-sm hover:shadow-md transition-shadow">
-                <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{testimonial.title}</h3>
-                <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6">{testimonial.text}</p>
-                <div class="w-full h-0.5 bg-gradient-to-r from-blue-300 to-blue-300 mb-2"></div>
-                <p class="font-semibold text-gray-900 text-sm sm:text-base">{testimonial.author}</p>
-              </div>
+            <div class="flex justify-center md:justify-end">
+                <ScheduleButton />
             </div>
-          ))}
         </div>
-      </div>
 
-      <!-- Slider Dots -->
-      <div class="flex justify-center gap-2 mt-6"></div>
+        <div class="relative opacity-0 animate-fade-in-delay-2">
+            <div class="overflow-hidden -mx-2 sm:mx-0">
+                <div id="testimonials-slider" class="flex transition-transform duration-700 ease-in-out">
+                    {testimonials.map((testimonial, index) => (
+                        <div class="w-full md:w-1/2 flex-shrink-0 px-2 sm:px-3" data-index={index}>
+                            <div class="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 lg:p-10 h-full shadow-sm hover:shadow-md transition-shadow">
+                                <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{testimonial.title}</h3>
+                                <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6">{testimonial.text}</p>
+                                <div class="w-full h-0.5 bg-gradient-to-r from-blue-300 to-blue-300 mb-2"></div>
+                                <p class="font-semibold text-gray-900 text-sm sm:text-base">{testimonial.author}</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            </div>
+
+            <div class="flex justify-center gap-2 mt-6"></div>
+        </div>
+
     </div>
-
-  </div>
 </section>
 
 <script>
   const slider = document.getElementById('testimonials-slider');
-  let dots: NodeListOf<HTMLElement> = document.querySelectorAll('.slider-dot');
+  let dots = document.querySelectorAll('.slider-dot');
   const cards = slider.querySelectorAll('[data-index]');
   const totalCards = cards.length;
   let currentIndex = 0;
-  let autoplayInterval: number;
+  let autoplayInterval;
   let isUserInteracting = false;
+  
+  // Variables para el SWIPE
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const SWIPE_THRESHOLD = 50; // Mínimo de píxeles para considerar un swipe
 
   const isMobile = () => window.innerWidth < 768;
 
@@ -83,6 +81,8 @@ const testimonials = [
     const container = document.querySelector('.flex.justify-center.gap-2');
     if (!container) return;
 
+    // Si es móvil, solo hay 3 slides posibles (100% de ancho).
+    // Si es desktop, hay 2 slides posibles (muestra 2 tarjetas a la vez).
     const numDots = isMobile() ? totalCards : totalCards - 1;
     container.innerHTML = '';
 
@@ -102,10 +102,11 @@ const testimonials = [
     if (currentIndex >= numDots) currentIndex = 0;
   };
 
-  const updateSlider = (index: number) => {
+  const updateSlider = (index) => {
     const maxIndex = isMobile() ? totalCards - 1 : totalCards - 2;
     currentIndex = Math.max(0, Math.min(index, maxIndex));
 
+    // Determina el porcentaje de desplazamiento: 100% para móvil, 50% para desktop
     const offset = isMobile() ? 100 : 50;
     slider.style.transform = `translateX(-${currentIndex * offset}%)`;
 
@@ -121,6 +122,10 @@ const testimonials = [
     const maxIndex = isMobile() ? totalCards - 1 : totalCards - 2;
     updateSlider(currentIndex < maxIndex ? currentIndex + 1 : 0);
   };
+  
+  const prevSlide = () => {
+    updateSlider(currentIndex > 0 ? currentIndex - 1 : 0);
+  };
 
   const startAutoplay = () => {
     stopAutoplay();
@@ -131,14 +136,48 @@ const testimonials = [
     if (autoplayInterval) clearInterval(autoplayInterval);
   };
 
+  // --- SWIPE LOGIC ---
+  const handleTouchStart = (e) => {
+    touchStartX = e.touches[0].clientX;
+    isUserInteracting = true;
+    stopAutoplay();
+  };
+
+  const handleTouchMove = (e) => {
+    // Puedes implementar aquí un desplazamiento en tiempo real si lo deseas.
+    // Por ahora, solo rastreamos la posición final para el cálculo.
+    touchEndX = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    const deltaX = touchStartX - touchEndX;
+    
+    // Si deslizó lo suficiente hacia la izquierda (next slide)
+    if (deltaX > SWIPE_THRESHOLD) {
+      nextSlide();
+    } 
+    // Si deslizó lo suficiente hacia la derecha (previous slide)
+    else if (deltaX < -SWIPE_THRESHOLD) {
+      prevSlide();
+    }
+    
+    // Resetear el estado de interacción y reanudar el autoplay
+    touchStartX = 0;
+    touchEndX = 0;
+    setTimeout(() => { isUserInteracting = false; startAutoplay(); }, 500);
+  };
+
+  // Event Listeners (Mouse y Touch)
   slider.addEventListener('mouseenter', () => { isUserInteracting = true; stopAutoplay(); });
   slider.addEventListener('mouseleave', () => { isUserInteracting = false; startAutoplay(); });
-  slider.addEventListener('touchstart', () => { isUserInteracting = true; stopAutoplay(); });
-  slider.addEventListener('touchend', () => {
-    setTimeout(() => { isUserInteracting = false; startAutoplay(); }, 500);
-  });
+  
+  slider.addEventListener('touchstart', handleTouchStart);
+  slider.addEventListener('touchmove', handleTouchMove);
+  slider.addEventListener('touchend', handleTouchEnd);
+
 
   window.addEventListener('resize', () => {
+    // Retraso para que el resize termine y el CSS se aplique.
     setTimeout(() => { recreateDots(); updateSlider(currentIndex); }, 250);
   });
 
@@ -150,7 +189,8 @@ const testimonials = [
 
 <style>
   .slider-dot { cursor: pointer; }
-  #testimonials-slider { touch-action: pan-y; }
+  /* Es fundamental para que el navegador sepa que el elemento es arrastrable horizontalmente */
+  #testimonials-slider { touch-action: pan-y; } 
 
   @keyframes fadeIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
   .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
