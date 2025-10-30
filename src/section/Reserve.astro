@@ -1,0 +1,65 @@
+---
+// Definiciones de variables en el frontmatter.
+const phone = '+595 972 762 266';
+const mapLink = 'https://maps.app.goo.gl/TuLinkDeGoogleMaps'; // Reemplaza con tu link real
+---
+<section class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
+  
+  <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 text-left">
+    Agendá tu consulta
+  </h2>
+        <div class="w-90 md:w-110 h-0.5 bg-gradient-to-r from-blue-500 to-blue-300 mb-4 mx-auto md:mx-0"></div>
+  <p class="text-gray-600 mb-8 pb-4 border-b border-gray-200 text-left">
+    ¿Lista para una sonrisa más brillante y saludable? Agendar tu cita es fácil y sin complicaciones.
+  </p>
+
+  <div class="mb-10">
+    <div class="flex justify-between items-center py-3 border-b border-gray-200">
+      <p class="text-lg font-medium ">Lunes a Jueves</p>
+      <p class="text-lg font-bold">9:00 a. m. a 7:00 p. m.</p>
+    </div>
+    <div class="flex justify-between items-center py-3">
+      <p class="text-lg font-medium ">Viernes a Domingo</p>
+      <p class="text-lg font-semibold">Cerrado</p>
+    </div>
+  </div>
+
+  <div class="grid md:grid-cols-2 gap-6">
+    <div class="relative p-6 bg-blue-50/70 rounded-2xl shadow-lg overflow-hidden">
+      <div class="absolute inset-0 z-0 opacity-5">
+        <div class="absolute w-40 h-40 bg-white rounded-full -right-10 -bottom-10 mix-blend-multiply"></div>
+        <div class="absolute w-40 h-40 bg-white rounded-full -left-10 -top-10 mix-blend-multiply"></div>
+      </div>
+      
+      <div class="relative z-10">
+        <span class="inline-block p-3 bg-white rounded-full text-blue-600 mb-4 shadow-md">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6.73-6.73A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72a12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+          </svg>
+        </span>
+        <h3 class="text-xl font-bold text-gray-900 mb-1">Teléfono</h3>
+        <p class="text-2xl font-semibold text-blue-700">{phone}</p>
+      </div>
+    </div>
+
+    <a href={mapLink} target="_blank" rel="noopener noreferrer" class="block">
+      <div class="relative p-6 bg-blue-50/70 rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden h-full">
+        <div class="absolute inset-0 z-0 opacity-5">
+          <div class="absolute w-40 h-40 bg-white rounded-full -right-10 -bottom-10 mix-blend-multiply"></div>
+          <div class="absolute w-40 h-40 bg-white rounded-full -left-10 -top-10 mix-blend-multiply"></div>
+        </div>
+
+        <div class="relative z-10">
+          <span class="inline-block p-3 bg-white rounded-full text-blue-600 mb-4 shadow-md">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-6 h-6">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+              <circle cx="12" cy="10" r="3"/>
+            </svg>
+          </span>
+          <h3 class="text-xl font-bold text-gray-900 mb-1">Dirección</h3>
+          <p class="text-lg text-blue-700">Link del google maps</p>
+        </div>
+      </div>
+    </a>
+  </div>
+</section>

@@ -1,0 +1,171 @@
+---
+import ScheduleButton from "../components/ScheduleButton.astro";
+
+const testimonials = [
+  {
+    title: "Fue realmente excelente",
+    text: "Mi experiencia con la Dra. Marta desde el primer momento mostró una gran dedicación, paciencia y calidez humana. Me explicó cada procedimiento con claridad, transmitió mucha confianza y se nota su compromiso con brindar el mejor resultado posible. El consultorio me pareció impecable, con equipos modernos y un ambiente muy agradable. Sin duda, una profesional altamente recomendable por su trato, su ética y la calidad de su trabajo.",
+    author: "Ninfa Torres"
+  },
+  {
+    title: "Mucho más que una visita al dentista",
+    text: "Su eficiencia y dedicación son admirables, su trato humano hace que cada consulta se sienta como una conversación entre amigas. Tiene la capacidad única de combinar la excelencia profesional con una empatía genuina, logrando que uno se sienta cuidado, comprendido y escuchado. Gracias a su trabajo hoy puedo sonreír con confianza, pero también con gratitud. La Dra. Marta además de ser mi odontóloga muchas veces es mi psicóloga.",
+    author: "Mirian Centurión"
+  },
+  {
+    title: "Eres la mejor odontóloga",
+    text: "Gracias Dra Marta!! Eres la mejor. Tu profesionalismo y amabilidad siempre con una sonrisa y ha mejorado mi seguridad al sonreír. Estoy muy agradecida por tu trabajo. Muchas gracias !!!!",
+    author: "Rossana Salas"
+  }
+];
+---
+
+<section id="review" class="py-12 md:py-16 lg:py-20 px-4 sm:px-6 overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+
+     <!-- Header Section -->
+    <div class="mb-12 lg:mb-16 opacity-0 animate-fade-in">
+      <!-- Título -->
+      <h2 class="text-2xl sm:text-3xl md:text-3xl lg:text-4xl font-medium text-gray-900 mb-3 text-center md:text-left">
+        Pacientes felices, sonrisas reales
+      </h2>
+
+      <!-- Raya azul -->
+      <div class="w-100 md:w-150 h-0.5 bg-gradient-to-r from-blue-500 to-blue-300 mb-4 mx-auto md:mx-0"></div>
+
+      <!-- Texto descriptivo -->
+      <p class="text-gray-600 text-base sm:text-lg md:text-lg lg:text-xl max-w-3xl text-center md:text-left mb-4">
+        Mi mayor satisfacción es ver el resultado final. Mirá lo que opinan mis pacientes de mi trabajo.
+      </p>
+
+      <!-- Botón -->
+      <div class="flex justify-center md:justify-end">
+        <ScheduleButton />
+      </div>
+    </div>
+
+    <!-- Testimonials Slider -->
+    <div class="relative opacity-0 animate-fade-in-delay-2">
+      <div class="overflow-hidden -mx-2 sm:mx-0">
+        <div id="testimonials-slider" class="flex transition-transform duration-700 ease-in-out">
+          {testimonials.map((testimonial, index) => (
+            <div class="w-full md:w-1/2 flex-shrink-0 px-2 sm:px-3" data-index={index}>
+              <div class="bg-white border border-gray-200 rounded-lg p-6 sm:p-8 lg:p-10 h-full shadow-sm hover:shadow-md transition-shadow">
+                <h3 class="text-lg sm:text-xl font-bold text-gray-900 mb-3 sm:mb-4">{testimonial.title}</h3>
+                <p class="text-sm sm:text-base text-gray-600 leading-relaxed mb-4 sm:mb-6">{testimonial.text}</p>
+                <div class="w-full h-0.5 bg-gradient-to-r from-blue-300 to-blue-300 mb-2"></div>
+                <p class="font-semibold text-gray-900 text-sm sm:text-base">{testimonial.author}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Slider Dots -->
+      <div class="flex justify-center gap-2 mt-6"></div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+  const slider = document.getElementById('testimonials-slider');
+  let dots: NodeListOf<HTMLElement> = document.querySelectorAll('.slider-dot');
+  const cards = slider.querySelectorAll('[data-index]');
+  const totalCards = cards.length;
+  let currentIndex = 0;
+  let autoplayInterval: number;
+  let isUserInteracting = false;
+
+  const isMobile = () => window.innerWidth < 768;
+
+  const recreateDots = () => {
+    const container = document.querySelector('.flex.justify-center.gap-2');
+    if (!container) return;
+
+    const numDots = isMobile() ? totalCards : totalCards - 1;
+    container.innerHTML = '';
+
+    for (let i = 0; i < numDots; i++) {
+      const dot = document.createElement('button');
+      dot.className = 'slider-dot w-2.5 h-2.5 sm:w-3 sm:h-3 rounded-full bg-gray-300 transition-all hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2';
+      dot.setAttribute('data-index', i.toString());
+      dot.setAttribute('aria-label', `Ir al testimonio ${i + 1}`);
+      dot.addEventListener('click', () => {
+        updateSlider(i);
+        startAutoplay();
+      });
+      container.appendChild(dot);
+    }
+
+    dots = document.querySelectorAll('.slider-dot');
+    if (currentIndex >= numDots) currentIndex = 0;
+  };
+
+  const updateSlider = (index: number) => {
+    const maxIndex = isMobile() ? totalCards - 1 : totalCards - 2;
+    currentIndex = Math.max(0, Math.min(index, maxIndex));
+
+    const offset = isMobile() ? 100 : 50;
+    slider.style.transform = `translateX(-${currentIndex * offset}%)`;
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('bg-blue-600', i === currentIndex);
+      dot.classList.toggle('scale-125', i === currentIndex);
+      dot.classList.toggle('bg-gray-300', i !== currentIndex);
+    });
+  };
+
+  const nextSlide = () => {
+    if (isUserInteracting) return;
+    const maxIndex = isMobile() ? totalCards - 1 : totalCards - 2;
+    updateSlider(currentIndex < maxIndex ? currentIndex + 1 : 0);
+  };
+
+  const startAutoplay = () => {
+    stopAutoplay();
+    autoplayInterval = window.setInterval(nextSlide, 5000);
+  };
+
+  const stopAutoplay = () => {
+    if (autoplayInterval) clearInterval(autoplayInterval);
+  };
+
+  slider.addEventListener('mouseenter', () => { isUserInteracting = true; stopAutoplay(); });
+  slider.addEventListener('mouseleave', () => { isUserInteracting = false; startAutoplay(); });
+  slider.addEventListener('touchstart', () => { isUserInteracting = true; stopAutoplay(); });
+  slider.addEventListener('touchend', () => {
+    setTimeout(() => { isUserInteracting = false; startAutoplay(); }, 500);
+  });
+
+  window.addEventListener('resize', () => {
+    setTimeout(() => { recreateDots(); updateSlider(currentIndex); }, 250);
+  });
+
+  // Inicialización
+  recreateDots();
+  updateSlider(0);
+  startAutoplay();
+</script>
+
+<style>
+  .slider-dot { cursor: pointer; }
+  #testimonials-slider { touch-action: pan-y; }
+
+  @keyframes fadeIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
+  .animate-fade-in-delay-1 { animation: fadeIn 0.8s ease-out 0.2s forwards; }
+  .animate-fade-in-delay-2 { animation: fadeIn 0.8s ease-out 0.4s forwards; }
+
+  [data-index] { min-width: 100%; }
+  @media (min-width: 768px) { [data-index] { min-width: 50%; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    #testimonials-slider, .animate-fade-in, .animate-fade-in-delay-1, .animate-fade-in-delay-2 {
+      transition: none;
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+</style>
