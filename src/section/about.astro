@@ -48,9 +48,11 @@
         data-delay="400"
       >
         <div class="flex-shrink-0">
-          <div class="w-14 h-14 bg-blue-500 text-white rounded-full flex items-center justify-center shadow-md">
-            🏅
-          </div>
+          <img 
+            src="/img/details/medallaoro.png" 
+            alt="Medalla de Oro a la excelencia académica" 
+            class="w-14 h-14 object-contain shadow-md rounded-2xl p-0.5"
+          />
         </div>
         
         <div>
@@ -69,10 +71,8 @@
     transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
-  /* CLAVE: Aseguramos que la animación de entrada en la imagen no mueva el eje X en móvil */
   [data-animate].animate-in {
     opacity: 1 !important;
-    /* La animación se encarga de que translate-x-0 sea la posición final en móvil */
     transform: translate(0, 0) scale(1) !important; 
   }
 </style>
