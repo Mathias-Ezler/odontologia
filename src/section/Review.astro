@@ -78,11 +78,10 @@ const testimonials = [
   const isMobile = () => window.innerWidth < 768;
 
   const recreateDots = () => {
+    // ... (Esta función no necesita cambios)
     const container = document.querySelector('.flex.justify-center.gap-2');
     if (!container) return;
 
-    // Si es móvil, solo hay 3 slides posibles (100% de ancho).
-    // Si es desktop, hay 2 slides posibles (muestra 2 tarjetas a la vez).
     const numDots = isMobile() ? totalCards : totalCards - 1;
     container.innerHTML = '';
 
@@ -92,7 +91,7 @@ const testimonials = [
       dot.setAttribute('data-index', i.toString());
       dot.setAttribute('aria-label', `Ir al testimonio ${i + 1}`);
       dot.addEventListener('click', () => {
-        updateSlider(i);
+        updateSlider(i, true); // Pasar 'true' para forzar la transición
         startAutoplay();
       });
       container.appendChild(dot);
@@ -102,7 +101,15 @@ const testimonials = [
     if (currentIndex >= numDots) currentIndex = 0;
   };
 
-  const updateSlider = (index) => {
+  // CLAVE: Añadimos un argumento 'useTransition' para controlarla
+  const updateSlider = (index, useTransition = false) => {
+    // 1. Controlar la Transición
+    if (useTransition) {
+        slider.classList.add('transition-transform');
+    } else {
+        slider.classList.remove('transition-transform');
+    }
+
     const maxIndex = isMobile() ? totalCards - 1 : totalCards - 2;
     currentIndex = Math.max(0, Math.min(index, maxIndex));
 
@@ -118,13 +125,14 @@ const testimonials = [
   };
 
   const nextSlide = () => {
-    if (isUserInteracting) return;
+    // Usar 'true' para que el autoplay tenga una transición suave
     const maxIndex = isMobile() ? totalCards - 1 : totalCards - 2;
-    updateSlider(currentIndex < maxIndex ? currentIndex + 1 : 0);
+    updateSlider(currentIndex < maxIndex ? currentIndex + 1 : 0, true); 
   };
   
   const prevSlide = () => {
-    updateSlider(currentIndex > 0 ? currentIndex - 1 : 0);
+    // Usar 'true' para que el clic/autoplay tenga una transición suave
+    updateSlider(currentIndex > 0 ? currentIndex - 1 : 0, true);
   };
 
   const startAutoplay = () => {
@@ -136,43 +144,66 @@ const testimonials = [
     if (autoplayInterval) clearInterval(autoplayInterval);
   };
 
-  // --- SWIPE LOGIC ---
+  // --- SWIPE LOGIC (MANEJO DE TRANSICIÓN) ---
   const handleTouchStart = (e) => {
     touchStartX = e.touches[0].clientX;
     isUserInteracting = true;
     stopAutoplay();
+    
+    // **CLAVE DE LA OPTIMIZACIÓN:** Removemos la clase de transición
+    slider.classList.remove('transition-transform');
   };
 
   const handleTouchMove = (e) => {
-    // Puedes implementar aquí un desplazamiento en tiempo real si lo deseas.
-    // Por ahora, solo rastreamos la posición final para el cálculo.
+    // **CLAVE: DESPLAZAMIENTO EN TIEMPO REAL**
+    // Esto es lo que hace que el slider siga el dedo (efecto inmediato)
     touchEndX = e.touches[0].clientX;
+    const deltaX = touchStartX - touchEndX;
+
+    // Calcular el porcentaje de desplazamiento actual (basado en el índice)
+    const cardWidth = slider.offsetWidth / (isMobile() ? 1 : 2);
+    const baseOffset = currentIndex * cardWidth;
+    const newTranslateX = -baseOffset + (touchEndX - touchStartX); 
+    
+    // Aplicar el transform, sin transición
+    slider.style.transform = `translateX(${newTranslateX}px)`;
   };
 
   const handleTouchEnd = () => {
+    // Al final del toque, re-activamos la transición antes de mover al índice final
+    slider.classList.add('transition-transform');
+
     const deltaX = touchStartX - touchEndX;
-    
+    let newIndex = currentIndex;
+
     // Si deslizó lo suficiente hacia la izquierda (next slide)
     if (deltaX > SWIPE_THRESHOLD) {
-      nextSlide();
+      newIndex = currentIndex < (isMobile() ? totalCards - 1 : totalCards - 2) ? currentIndex + 1 : currentIndex;
     } 
     // Si deslizó lo suficiente hacia la derecha (previous slide)
     else if (deltaX < -SWIPE_THRESHOLD) {
-      prevSlide();
+      newIndex = currentIndex > 0 ? currentIndex - 1 : currentIndex;
     }
     
-    // Resetear el estado de interacción y reanudar el autoplay
+    // Mover al índice final (con la transición de CSS ya re-activada)
+    updateSlider(newIndex, true); // Forzar la transición en el movimiento final
+    
+    // Resetear el estado de interacción y reanudar el autoplay (quitamos el setTimeout de 500ms)
     touchStartX = 0;
     touchEndX = 0;
-    setTimeout(() => { isUserInteracting = false; startAutoplay(); }, 500);
+    isUserInteracting = false;
+    startAutoplay(); 
   };
+  // --- FIN DE LA LÓGICA SWIPE ---
+
 
   // Event Listeners (Mouse y Touch)
+  // Las interacciones con el mouse no tienen handleMove, por lo que usan la transición normal
   slider.addEventListener('mouseenter', () => { isUserInteracting = true; stopAutoplay(); });
   slider.addEventListener('mouseleave', () => { isUserInteracting = false; startAutoplay(); });
   
   slider.addEventListener('touchstart', handleTouchStart);
-  slider.addEventListener('touchmove', handleTouchMove);
+  slider.addEventListener('touchmove', handleTouchMove); // Implementamos el movimiento
   slider.addEventListener('touchend', handleTouchEnd);
 
 
@@ -183,15 +214,25 @@ const testimonials = [
 
   // Inicialización
   recreateDots();
-  updateSlider(0);
+  // Al inicio, aseguramos que la transición esté activa (para el autoplay)
+  updateSlider(0, true); 
   startAutoplay();
 </script>
 
 <style>
   .slider-dot { cursor: pointer; }
   /* Es fundamental para que el navegador sepa que el elemento es arrastrable horizontalmente */
-  #testimonials-slider { touch-action: pan-y; } 
+  #testimonials-slider { 
+    touch-action: pan-y;
+    /* La transición se define con la clase para poder removerla/añadirla con JS */
+  } 
 
+  /* Definición de la clase de transición */
+  .transition-transform {
+    transition: transform 0.7s ease-in-out;
+  }
+  
+  /* CLASES DE ANIMACIÓN Y MEDIA QUERIES... (mantener igual) */
   @keyframes fadeIn { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
   .animate-fade-in { animation: fadeIn 0.8s ease-out forwards; }
   .animate-fade-in-delay-1 { animation: fadeIn 0.8s ease-out 0.2s forwards; }
