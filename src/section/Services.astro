@@ -9,16 +9,22 @@ const services = [
     link: "#arquitectura-labial",
   },
   {
+    title: "Estética",
+    imagePath: "/img/details/perodoncia.webp",
+    imageAlt: "Modelo de yeso de una dentadura con dientes tallados para tratamientos de estética dental.",
+    link: "#estetica",
+  },
+  {
     title: "Periodoncia",
     imagePath: "/img/details/estetica.webp",
     imageAlt: "Odontóloga realizando un tratamiento de periodoncia.",
     link: "#periodoncia",
   },
   {
-    title: "Estética",
-    imagePath: "/img/details/perodoncia.webp",
+    title: "Operatoria",
+    imagePath: "/img/details/operatoria.png",
     imageAlt: "Modelo de yeso de una dentadura con dientes tallados para tratamientos de estética dental.",
-    link: "#estetica",
+    link: "#operatoria",
   },
 ];
 
@@ -33,18 +39,18 @@ const TRANSITION_PROPS = "transition duration-700 ease-out";
     <!-- Encabezado -->
     <header class="flex flex-col md:flex-row justify-between items-start md:items-center mb-12">
       <div>
-        <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 leading-tight border-b border-blue-500 pb-2 inline-block">
+        <h1 class="text-3xl md:text-5xl font-semibold text-gray-900 leading-tight border-b border-[#BFD9FF] pb-2 inline-block">
           Mis servicios odontológicos
         </h1>
         <p class="mt-3 text-lg text-gray-600">
           Soluciones integrales para la salud y estética de tu sonrisa.
         </p>
       </div>
-      <ScheduleButton /> <!-- Componente del botón de agendar cita -->
+      <ScheduleButton />
     </header>
 
     <!-- Tarjetas -->
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-10">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-6">
       {services.map(({ title, imagePath, imageAlt, link }, i) => (
         <a 
           href={link}
@@ -77,7 +83,6 @@ const TRANSITION_PROPS = "transition duration-700 ease-out";
   const initial = initialClasses.split(' ');
   const visible = visibleClasses.split(' ');
 
-  // IntersectionObserver para animar solo cuando el usuario vea la sección
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

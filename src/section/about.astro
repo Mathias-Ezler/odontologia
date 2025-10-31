@@ -1,32 +1,32 @@
 ---
-// Si este fuera un componente Astro, el script de JS debería ir abajo en la etiqueta <script>
-// y el CSS en la etiqueta <style>. Aquí los mantendré en su ubicación original.
 ---
 
 <section id="about" class="max-w-6xl mx-auto px-6 md:px-8 py-20">
-  <div class="grid md:grid-cols-2 gap-0 md:gap-12 items-center">
+  <div class="grid md:grid-cols-2 gap-8 md:gap-12 items-start">
     
+    <!-- Imagen principal -->
     <div 
       class="relative opacity-0 translate-x-0 md:translate-x-[-50px] flex justify-center mb-10 md:mb-0" 
       data-animate="fade-right"
     >
-      <img 
-        src="/img/details/doctora.webp"
-        alt="Dra. Shemfire" 
-        class="w-full h-auto rounded-2xl shadow-xl max-w-sm md:max-w-full"
-      />
-      <div class="absolute -bottom-5 -right-5 w-24 h-24 bg-blue-100 rounded-full blur-2xl opacity-70"></div>
+      <div class="relative bg-neutral-200 rounded-3xl overflow-hidden">
+        <img 
+          src="/img/details/doctora.webp"
+          alt="Dra. Shemfire" 
+          class="w-full h-auto object-cover"
+        />
+      </div>
     </div>
 
-    <div class="space-y-8">
+    <!-- Contenido textual -->
+    <div class="space-y-6">
       <div class="opacity-0 translate-y-[-30px]" data-animate="fade-up">
-        <h2 class="text-3xl md:text-5xl font-semibold text-gray-900 leading-tight border-b border-blue-500 pb-2 inline-block">Sobre mí</h2>
+        <h2 class="text-3xl md:text-5xl font-semibold text-gray-900 leading-tight border-b border-[#BFD9FF] pb-2 inline-block">Sobre mí</h2>
       </div>
       
-      <div class="space-y-6 text-gray-700 leading-relaxed">
+      <div class="space-y-4 text-gray-700 text-base leading-relaxed">
         <p class="opacity-0 translate-y-[-20px]" data-animate="fade-up" data-delay="100">
-          ¡Hola! Soy la Dra. <span class="font-semibold text-gray-900">Marta</span>. 
-          Mi pasión es combinar la salud dental con la estética, creando sonrisas 
+          ¡Hola! Soy la Dra. Shemfire. Mi pasión es combinar la salud dental con la estética, creando sonrisas 
           naturales que devuelvan la confianza a mis pacientes.
         </p>
         
@@ -40,23 +40,24 @@
           usando siempre la mejor tecnología en un ambiente relajado y profesional.
         </p>
       </div>
-
+      <!-- Card de la medalla -->
       <div 
-        class="flex items-center gap-5 bg-gradient-to-r from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200 shadow-sm opacity-0 scale-95"
+        class="flex items-start gap-4 rounded-2xl border border-blue-200 p-5 scale-100 w-85 mt-8 bg-cover bg-left"
+        style="background-image: url('/img/details/cardbg.png');"
         data-animate="fade-scale" 
         data-delay="400"
       >
         <div class="flex-shrink-0">
           <img 
-            src="/img/details/medallaoro.png" 
-            alt="Medalla de Oro a la excelencia académica" 
-            class="w-14 h-14 object-contain shadow-md rounded-2xl p-0.5"
+            src="/img/details/medallabg.png" 
+            alt="Medalla de Oro" 
+            class="w-12 h-12 object-contain"
           />
         </div>
         
         <div>
-          <h3 class="font-semibold text-gray-900 text-lg">Medalla De Oro</h3>
-          <p class="text-sm text-gray-700">
+          <h3 class="font-bold text-gray-900 text-lg mb-1">Medalla De Oro</h3>
+          <p class="text-sm text-gray-700 leading-snug">
             Soy la mejor egresada de la facultad de odontología, medalla de oro.
           </p>
         </div>
@@ -72,14 +73,13 @@
 
   [data-animate].animate-in {
     opacity: 1 !important;
-    transform: translate(0, 0) scale(1) !important; 
+    transform: translate(0, 0) scale(1) !important;
   }
 </style>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const animatedElements = document.querySelectorAll('[data-animate]');
-    
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
