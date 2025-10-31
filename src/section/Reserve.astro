@@ -1,14 +1,12 @@
 ---
-// Definiciones de variables en el frontmatter.
 const phone = '+595 972 762 266';
 const mapLink = 'https://maps.app.goo.gl/TuLinkDeGoogleMaps'; // Reemplaza con tu link real
 ---
 <section class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
   
-  <h2 class="text-3xl sm:text-4xl font-bold text-gray-900 mb-2 text-left">
+  <h2 class="text-3xl md:text-5xl font-semibold text-gray-900 leading-tight border-b border-blue-500 pb-2 inline-block">
     Agendá tu consulta
   </h2>
-        <div class="w-90 md:w-110 h-0.5 bg-gradient-to-r from-blue-500 to-blue-300 mb-4 mx-auto md:mx-0"></div>
   <p class="text-gray-600 mb-8 pb-4 border-b border-gray-200 text-left">
     ¿Lista para una sonrisa más brillante y saludable? Agendar tu cita es fácil y sin complicaciones.
   </p>
@@ -25,10 +23,12 @@ const mapLink = 'https://maps.app.goo.gl/TuLinkDeGoogleMaps'; // Reemplaza con t
   </div>
 
   <div class="grid md:grid-cols-2 gap-6">
-    <div class="relative p-6 bg-blue-50/70 rounded-2xl shadow-lg overflow-hidden">
-      <div class="absolute inset-0 z-0 opacity-5">
-        <div class="absolute w-40 h-40 bg-white rounded-full -right-10 -bottom-10 mix-blend-multiply"></div>
-        <div class="absolute w-40 h-40 bg-white rounded-full -left-10 -top-10 mix-blend-multiply"></div>
+    
+    <div class="relative p-6 bg-blue-50/70 rounded-2xl shadow-lg border border-blue-100 overflow-hidden">
+      <div class="absolute inset-0 z-0 opacity-40">
+        <div class="absolute w-36 h-36 bg-white rounded-full -top-10 -right-10 transform rotate-45 border-r border-white"></div>
+        <div class="absolute w-28 h-28 bg-white rounded-full -bottom-5 -left-5 transform -rotate-12 border-l border-white"></div>
+        <div class="absolute w-24 h-24 bg-white rounded-full top-1/4 right-1/4 opacity-50 blur-sm"></div>
       </div>
       
       <div class="relative z-10">
@@ -37,16 +37,17 @@ const mapLink = 'https://maps.app.goo.gl/TuLinkDeGoogleMaps'; // Reemplaza con t
             <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6.73-6.73A19.79 19.79 0 0 1 2 4.18 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.72a12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
           </svg>
         </span>
-        <h3 class="text-xl font-bold text-gray-900 mb-1">Teléfono</h3>
-        <p class="text-2xl font-semibold text-blue-700">{phone}</p>
+        <h3 class="text-2xl font-bold text-gray-900 mb-1">Teléfono</h3>
+        <p class="text-lg text-gray-700">{phone}</p>
       </div>
     </div>
 
-    <a href={mapLink} target="_blank" rel="noopener noreferrer" class="block">
-      <div class="relative p-6 bg-blue-50/70 rounded-2xl shadow-lg hover:shadow-xl transition-shadow overflow-hidden h-full">
-        <div class="absolute inset-0 z-0 opacity-5">
-          <div class="absolute w-40 h-40 bg-white rounded-full -right-10 -bottom-10 mix-blend-multiply"></div>
-          <div class="absolute w-40 h-40 bg-white rounded-full -left-10 -top-10 mix-blend-multiply"></div>
+    <a href={mapLink} target="_blank" rel="noopener noreferrer" class="block h-full">
+      <div class="relative p-6 bg-blue-50/70 rounded-2xl shadow-lg border border-blue-100 hover:shadow-xl transition-shadow duration-300 overflow-hidden h-full">
+        <div class="absolute inset-0 z-0 opacity-40">
+            <div class="absolute w-36 h-36 bg-white rounded-full -top-10 -right-10 transform rotate-45 border-r border-white"></div>
+            <div class="absolute w-28 h-28 bg-white rounded-full -bottom-5 -left-5 transform -rotate-12 border-l border-white"></div>
+            <div class="absolute w-24 h-24 bg-white rounded-full top-1/4 right-1/4 opacity-50 blur-sm"></div>
         </div>
 
         <div class="relative z-10">
@@ -56,8 +57,8 @@ const mapLink = 'https://maps.app.goo.gl/TuLinkDeGoogleMaps'; // Reemplaza con t
               <circle cx="12" cy="10" r="3"/>
             </svg>
           </span>
-          <h3 class="text-xl font-bold text-gray-900 mb-1">Dirección</h3>
-          <p class="text-lg text-blue-700">Link del google maps</p>
+          <h3 class="text-2xl font-bold text-gray-900 mb-1">Dirección</h3>
+          <p class="text-lg text-gray-700">Calle 123 nose que poner jaskjas</p>
         </div>
       </div>
     </a>
