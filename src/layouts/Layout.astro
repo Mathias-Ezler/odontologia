@@ -3,10 +3,9 @@ import '../styles/global.css';
 import SEO from '../components/SEO.astro';
 
 const {
-	title = "Odontología - Dra. Marta Apodaca",
-	description = "Consultorio dental profesional con atención personalizada.",
+	title = "Dentista en Encarnación - Dra. Marta Apodaca | Odontología Profesional",
+	description = "Clínica dental en Encarnación, Paraguay. Ortodoncia, limpieza dental, blanqueamiento y más. 📍 Agenda tu cita. ⭐ 15 años de experiencia.",
 	image = "/img/logos/logo.webp",
-	url = "https://dramartaapodaca.com",
 } = Astro.props;
 ---
 
@@ -14,9 +13,19 @@ const {
 <html lang="es">
 	<head>
 		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta name="generator" content={Astro.generator} />
+		
+		<!-- Favicons -->
 		<link rel="icon" type="image/webp" href="/img/logos/logo.webp" />
-		<SEO {title} {description} {image} {url} />
+		<link rel="apple-touch-icon" href="/img/logos/logo.webp" />
+		
+		<!-- Preconnect para mejorar performance -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		
+		<!-- SEO Component -->
+		<SEO {title} {description} {image} />
 	</head>
 	<body>
 		<slot />
