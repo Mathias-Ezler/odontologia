@@ -7,7 +7,7 @@ const mapLink = 'https://maps.app.goo.gl/NuGq49Xqi7EsSW7p9?g_st=aw';
   <h2 class="text-3xl md:text-5xl font-semibold text-gray-900 leading-tight border-b border-[#BFD9FF] pb-2 inline-block">
     Agendá tu consulta
   </h2>
-  <p class="text-gray-600 mb-8 md:mt-4 pb-4 border-b border-gray-200 text-left">
+  <p class="text-gray-600 mb-8 md:mt-4 mt-4 pb-4 border-b border-gray-200 text-left">
     ¿Lista para una sonrisa más brillante y saludable? Agendar tu cita es fácil y sin complicaciones.
   </p>
 
@@ -25,17 +25,24 @@ const mapLink = 'https://maps.app.goo.gl/NuGq49Xqi7EsSW7p9?g_st=aw';
   <div class="grid md:grid-cols-2 gap-6">
     
     <div class="relative p-6 rounded-2xl shadow-lg overflow-hidden bg-cover bg-center" style="background-image: url('/img/details/carlogbg.png');">
-      <div class="relative z-10">
-        <span class="inline-block mb-4">
-          <img 
-            src="/img/details/cel.svg" 
-            alt="Teléfono" 
-            class="w-9 h-auto object-contain"
-          />
-        </span>
-        <h3 class="text-2xl font-bold text-gray-900 mb-1">Teléfono</h3>
-        <p class="text-lg text-gray-700">{phone}</p>
-      </div>
+      <a 
+  href={`https://wa.me/${phone.replace(/\D/g, '')}`}
+  target="_blank"
+  rel="noopener noreferrer"
+  class="block"
+>
+  <div class="relative z-10">
+    <span class="inline-block mb-4">
+      <img 
+        src="/img/details/cel.svg" 
+        alt="Teléfono" 
+        class="w-9 h-auto object-contain"
+      />
+    </span>
+    <h3 class="text-2xl font-bold text-gray-900 mb-1">Teléfono</h3>
+    <p class="text-lg text-gray-700">{phone}</p>
+  </div>
+</a>
     </div>
 
     <a href={mapLink} target="_blank" rel="noopener noreferrer" class="block h-full">
